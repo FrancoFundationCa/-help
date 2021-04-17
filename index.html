@@ -46,3 +46,42 @@ div.absolute {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/upgrade.min.js" integrity="sha256-qdYefRY5PSmWEqX6ykpThrm6Q68Jl4U7RCOGCug6h04=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/web_worker/ui.dev.js" integrity="sha256-5W3TyZmaX872FPn0ltf7pArqMGeCq/1946XZpw0PDjw=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/web_worker/worker.dev.js" integrity="sha256-6JLMdqKqAo57a+kcaGjS6Wm1c1EaKI3W9qJxaJYGzR4=" crossorigin="anonymous"></script>
+
+
+
+<html>
+    <head>
+        <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    </head>
+    <body>
+        
+        var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+getUserMedia({video: true, audio: true}, function(stream) {
+  var call = peer.call('another-peers-id', stream);
+  call.on('stream', function(remoteStream) {
+    // Show stream in some video/canvas element.
+  });
+}, function(err) {
+  console.log('Failed to get local stream' ,err);
+});
+        
+        
+        
+        var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+peer.on('call', function(call) {
+  getUserMedia({video: true, audio: true}, function(stream) {
+    call.answer(stream); // Answer the call with an A/V stream.
+    call.on('stream', function(remoteStream) {
+      // Show stream in some video/canvas element.
+    });
+  }, function(err) {
+    console.log('Failed to get local stream' ,err);
+  });
+});
+        
+        
+    </body>
+    </html>
+        
+
+<script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
