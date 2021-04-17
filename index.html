@@ -54,7 +54,7 @@ div.absolute {
         <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
     </head>
     <body>
-        
+        <script>
         var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 getUserMedia({video: true, audio: true}, function(stream) {
   var call = peer.call('another-peers-id', stream);
@@ -64,8 +64,8 @@ getUserMedia({video: true, audio: true}, function(stream) {
 }, function(err) {
   console.log('Failed to get local stream' ,err);
 });
-        
-        
+        </script>
+        <script>
         
         var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 peer.on('call', function(call) {
@@ -78,7 +78,7 @@ peer.on('call', function(call) {
     console.log('Failed to get local stream' ,err);
   });
 });
-        
+      </script>  
         
     </body>
     </html>
