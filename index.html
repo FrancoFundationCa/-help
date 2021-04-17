@@ -99,6 +99,14 @@ div.absolute {
         
         <script type="text/javascript">
             (function () {
+                
+                var conn = peer.connect('another-peers-id');
+// on open will be launch when you successfully connect to PeerServer
+conn.on('open', function(){
+  // here you have conn.id
+  conn.send('hi!');
+});
+                
         var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 getUserMedia({video: true, audio: true}, function(stream) {
   var call = peer.call('another-peers-id', stream);
