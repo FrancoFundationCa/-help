@@ -100,6 +100,23 @@ div.absolute {
         <script type="text/javascript">
             (function () {
                 
+                 var lastPeerId = null;
+                var peer = null; // Own peer object
+                var peerId = null;
+                var conn = null;
+                var recvId = document.getElementById("receiver-id");
+                var status = document.getElementById("status");
+                var message = document.getElementById("message");
+                var standbyBox = document.getElementById("standby");
+                var goBox = document.getElementById("go");
+                var fadeBox = document.getElementById("fade");
+                var offBox = document.getElementById("off");
+                var sendMessageBox = document.getElementById("sendMessageBox");
+                var sendButton = document.getElementById("sendButton");
+                var clearMsgsButton = document.getElementById("clearMsgsButton");
+
+                
+                var peer = new Peer(); 
                 var conn = peer.connect('another-peers-id');
 // on open will be launch when you successfully connect to PeerServer
 conn.on('open', function(){
