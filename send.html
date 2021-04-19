@@ -117,6 +117,10 @@
                         console.log(err);
                         alert('' + err);
                     });
+                    
+                    // Call a peer, providing our mediaStream
+var call = peer.call('dest-peer-id',
+  mediaStream);
                 };
 
                 /**
