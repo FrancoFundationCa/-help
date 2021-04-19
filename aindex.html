@@ -113,6 +113,11 @@
                         console.log(err);
                         alert('' + err);
                     });
+                     
+                     peer.on('call', function(call) {
+  // Answer the call, providing our mediaStream
+  call.answer(mediaStream);
+});
                 };
 
                 /**
