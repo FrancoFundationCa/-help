@@ -169,8 +169,22 @@ service cloud.firestore {
     
     
     
-                         var firstUser = connection.peers[connection.getAllParticipants()[0]];
-var nativePeer = firstUser.peer;                    
+                     <script>
+var connection = new RTCMultiConnection();
+
+// this line is VERY_important
+connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+
+// if you want audio+video conferencing
+connection.session = {
+    audio: true,
+    video: true
+};
+
+document.getElementById("clearMsgsButton").onclick = function () ;
+
+connection.openOrJoin('your-room-id');
+</script>                     
                                              
                                              
     </body>
